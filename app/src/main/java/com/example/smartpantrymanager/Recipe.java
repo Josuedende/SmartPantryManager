@@ -1,5 +1,4 @@
 package com.example.smartpantrymanager;
 
-
-public class PantryItem {
+public class Recipe {
 }

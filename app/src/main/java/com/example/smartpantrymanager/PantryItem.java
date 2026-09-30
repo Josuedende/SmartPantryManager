@@ -5,7 +5,7 @@ public class PantryItem {
     private String name;
     private double quantity;
     private String unit;
-    private String expiryDate; // stored as "yyyy-MM-dd", can be null
+    private String expiryDate;
 
     public PantryItem() {
     }
@@ -17,14 +17,12 @@ public class PantryItem {
         this.expiryDate = expiryDate;
     }
 
-    // Getters
     public long getId() { return id; }
     public String getName() { return name; }
     public double getQuantity() { return quantity; }
     public String getUnit() { return unit; }
     public String getExpiryDate() { return expiryDate; }
 
-    // Setters
     public void setId(long id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setQuantity(double quantity) { this.quantity = quantity; }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -23,6 +24,11 @@
         <activity
             android:name=".PantryListActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".AddEditIngredientActivity"
+            android:exported="false"
+            android:parentActivityName=".PantryListActivity" />
 
     </application>
 

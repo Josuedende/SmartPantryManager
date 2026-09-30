@@ -1,5 +1,6 @@
 package com.example.smartpantrymanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -33,7 +34,9 @@ public class PantryListActivity extends AppCompatActivity {
         recyclerPantry.setLayoutManager(new LinearLayoutManager(this));
 
         fabAdd.setOnClickListener(v -> {
-            // We'll wire this to the Add/Edit screen next
+            Intent intent = new Intent(PantryListActivity.this,
+                    AddEditIngredientActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -46,7 +49,14 @@ public class PantryListActivity extends AppCompatActivity {
     private void loadPantry() {
         List<PantryItem> items = dbHelper.getAllPantryItems();
         adapter = new PantryAdapter(items, item -> {
-            // Tapping a row opens edit — wired up next step
+            Intent intent = new Intent(PantryListActivity.this,
+                    AddEditIngredientActivity.class);
+            intent.putExtra(AddEditIngredientActivity.EXTRA_ID, item.getId());
+            intent.putExtra(AddEditIngredientActivity.EXTRA_NAME, item.getName());
+            intent.putExtra(AddEditIngredientActivity.EXTRA_QUANTITY, item.getQuantity());
+            intent.putExtra(AddEditIngredientActivity.EXTRA_UNIT, item.getUnit());
+            intent.putExtra(AddEditIngredientActivity.EXTRA_EXPIRY, item.getExpiryDate());
+            startActivity(intent);
         });
         recyclerPantry.setAdapter(adapter);
 

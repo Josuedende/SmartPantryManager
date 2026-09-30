@@ -21,16 +21,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PantryListActivity" android:exported="false" />
+        <activity
+            android:name=".PantryListActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
 
         <activity
             android:name=".AddEditIngredientActivity"
             android:exported="false"
             android:parentActivityName=".PantryListActivity" />
 
-        <activity android:name=".SuggestedRecipesActivity" android:exported="false" />
+        <activity
+            android:name=".SuggestedRecipesActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
 
-        <activity android:name=".RecipeDetailActivity" android:exported="false" />
+        <activity
+            android:name=".RecipeDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".SuggestedRecipesActivity" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
 
     </application>
 

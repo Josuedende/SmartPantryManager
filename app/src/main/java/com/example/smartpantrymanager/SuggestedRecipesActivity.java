@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.List;
 
 public class SuggestedRecipesActivity extends AppCompatActivity {
@@ -27,6 +29,28 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
 
         recyclerRecipes.setLayoutManager(new LinearLayoutManager(this));
+
+        setupBottomNav();
+    }
+
+    private void setupBottomNav() {
+        BottomNavigationView nav = findViewById(R.id.bottomNav);
+        nav.setSelectedItemId(R.id.nav_recipes);
+        nav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_pantry) {
+                startActivity(new Intent(this, PantryListActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+            } else if (id == R.id.nav_recipes) {
+                return true;
+            } else if (id == R.id.nav_settings) {
+                startActivity(new Intent(this, SettingsActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+            }
+            return false;
+        });
     }
 
     @Override

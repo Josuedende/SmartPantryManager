@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -36,16 +37,32 @@ public class PantryListActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         recyclerPantry.setLayoutManager(new LinearLayoutManager(this));
 
-        fabAdd.setOnClickListener(v -> {
-            Intent intent = new Intent(PantryListActivity.this,
-                    AddEditIngredientActivity.class);
-            startActivity(intent);
-        });
+        fabAdd.setOnClickListener(v -> startActivity(
+                new Intent(PantryListActivity.this, AddEditIngredientActivity.class)));
 
-        buttonViewSuggestions.setOnClickListener(v -> {
-            Intent intent = new Intent(PantryListActivity.this,
-                    SuggestedRecipesActivity.class);
-            startActivity(intent);
+        buttonViewSuggestions.setOnClickListener(v -> startActivity(
+                new Intent(PantryListActivity.this, SuggestedRecipesActivity.class)));
+
+        setupBottomNav();
+    }
+
+    private void setupBottomNav() {
+        BottomNavigationView nav = findViewById(R.id.bottomNav);
+        nav.setSelectedItemId(R.id.nav_pantry);
+        nav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_pantry) {
+                return true;
+            } else if (id == R.id.nav_recipes) {
+                startActivity(new Intent(this, SuggestedRecipesActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+            } else if (id == R.id.nav_settings) {
+                startActivity(new Intent(this, SettingsActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+            }
+            return false;
         });
     }
 

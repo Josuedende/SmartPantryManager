@@ -3,6 +3,7 @@ package com.example.smartpantrymanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class PantryListActivity extends AppCompatActivity {
     private RecyclerView recyclerPantry;
     private TextView textEmpty;
     private FloatingActionButton fabAdd;
+    private Button buttonViewSuggestions;
     private DatabaseHelper dbHelper;
     private PantryAdapter adapter;
 
@@ -29,6 +31,7 @@ public class PantryListActivity extends AppCompatActivity {
         recyclerPantry = findViewById(R.id.recyclerPantry);
         textEmpty = findViewById(R.id.textEmpty);
         fabAdd = findViewById(R.id.fabAdd);
+        buttonViewSuggestions = findViewById(R.id.buttonViewSuggestions);
 
         dbHelper = new DatabaseHelper(this);
         recyclerPantry.setLayoutManager(new LinearLayoutManager(this));
@@ -36,6 +39,12 @@ public class PantryListActivity extends AppCompatActivity {
         fabAdd.setOnClickListener(v -> {
             Intent intent = new Intent(PantryListActivity.this,
                     AddEditIngredientActivity.class);
+            startActivity(intent);
+        });
+
+        buttonViewSuggestions.setOnClickListener(v -> {
+            Intent intent = new Intent(PantryListActivity.this,
+                    SuggestedRecipesActivity.class);
             startActivity(intent);
         });
     }

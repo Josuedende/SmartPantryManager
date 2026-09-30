@@ -21,14 +21,16 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".PantryListActivity"
-            android:exported="false" />
+        <activity android:name=".PantryListActivity" android:exported="false" />
 
         <activity
             android:name=".AddEditIngredientActivity"
             android:exported="false"
             android:parentActivityName=".PantryListActivity" />
+
+        <activity android:name=".SuggestedRecipesActivity" android:exported="false" />
+
+        <activity android:name=".RecipeDetailActivity" android:exported="false" />
 
     </application>
 

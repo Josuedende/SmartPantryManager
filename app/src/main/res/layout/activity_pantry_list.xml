@@ -19,6 +19,16 @@
             android:textStyle="bold"
             android:textColor="#212121" />
 
+        <Button
+            android:id="@+id/buttonViewSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="View Suggested Recipes"
+            android:backgroundTint="#2E7D32"
+            android:textColor="#FFFFFF" />
+
         <TextView
             android:id="@+id/textEmpty"
             android:layout_width="match_parent"
